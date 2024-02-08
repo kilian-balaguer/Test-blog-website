@@ -36,20 +36,21 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .catch(error => console.error('Error fetching GitHub issues:', error));
 
-    // Function to open popup with full issue content
-    function openPopup(url) {
-        fetch(url)
-            .then(response => response.json())
-            .then(issue => {
-                popupContent.innerHTML = `
-                    <h2>${issue.title}</h2>
-                    <p>${issue.body}</p>
-                `;
-                overlay.style.display = 'block';
-                popup.style.display = 'block';
-            })
-            .catch(error => console.error('Error fetching GitHub issue:', error));
-    }
+   // Function to open popup with full issue content
+function openPopup(url) {
+    fetch(url)
+        .then(response => response.json())
+        .then(issue => {
+            const popupContentHTML = `
+                <h2>${issue.title}</h2>
+                <p>${issue.body}</p>
+            `;
+            popupContent.innerHTML = popupContentHTML;
+            overlay.style.display = 'block';
+            popup.style.display = 'block';
+        })
+        .catch(error => console.error('Error fetching GitHub issue:', error));
+}
 
     // Close popup
     closeBtn.addEventListener('click', function () {
