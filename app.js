@@ -5,10 +5,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const closeBtn = document.getElementById('close-btn');
     const popupContent = document.getElementById('popup-content');
 
+    // GitHub repository details
     const username = 'kilian-balaguer';
     const repo = 'Test-blog-website';
     const apiUrl = `https://api.github.com/repos/${username}/${repo}/issues`;
-    
 
     // Fetch GitHub issues
     fetch(apiUrl)
@@ -36,25 +36,24 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .catch(error => console.error('Error fetching GitHub issues:', error));
 
-  // Function to open popup with full issue content
-function openPopup(url) {
-    fetch(url)
-        .then(response => response.json())
-        .then(issue => {
-            const popupContentHTML = `
-                <h2>${issue.title}</h2>
-                <p>${issue.body}</p>
-            `;
-            popupContent.innerHTML = popupContentHTML;
-            overlay.style.display = 'block';
-            popup.style.display = 'block';
-        })
-        .catch(error => {
-            console.error('Error fetching GitHub issue:', error);
-            alert('Failed to fetch GitHub issue. Please try again.');
-        });
-}
-
+    // Function to open popup with full issue content
+    function openPopup(url) {
+        fetch(url)
+            .then(response => response.json())
+            .then(issue => {
+                const popupContentHTML = `
+                    <h2>${issue.title}</h2>
+                    <p>${issue.body}</p>
+                `;
+                popupContent.innerHTML = popupContentHTML;
+                overlay.style.display = 'block';
+                popup.style.display = 'block';
+            })
+            .catch(error => {
+                console.error('Error fetching GitHub issue:', error);
+                alert('Failed to fetch GitHub issue. Please try again.');
+            });
+    }
 
     // Close popup
     closeBtn.addEventListener('click', function () {
