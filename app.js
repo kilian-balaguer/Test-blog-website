@@ -5,10 +5,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const closeBtn = document.getElementById('close-btn');
     const popupContent = document.getElementById('popup-content');
 
-    // GitHub repository details
     const username = 'kilian-balaguer';
     const repo = 'Test-blog-website';
     const apiUrl = `https://api.github.com/repos/${username}/${repo}/issues`;
+    
 
     // Fetch GitHub issues
     fetch(apiUrl)
