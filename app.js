@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .catch(error => console.error('Error fetching GitHub issues:', error));
 
-   // Function to open popup with full issue content
+  // Function to open popup with full issue content
 function openPopup(url) {
     fetch(url)
         .then(response => response.json())
@@ -49,8 +49,12 @@ function openPopup(url) {
             overlay.style.display = 'block';
             popup.style.display = 'block';
         })
-        .catch(error => console.error('Error fetching GitHub issue:', error));
+        .catch(error => {
+            console.error('Error fetching GitHub issue:', error);
+            alert('Failed to fetch GitHub issue. Please try again.');
+        });
 }
+
 
     // Close popup
     closeBtn.addEventListener('click', function () {
